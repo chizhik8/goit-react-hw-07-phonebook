@@ -1,0 +1,75 @@
+body {
+  height: auto;
+  width: max-content;
+  background-color: whitesmoke;
+  box-shadow: 0 0 5px 2px;
+  border-radius: 10%;
+  margin: 10px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+  margin: 5px;
+  padding: 3px;
+}
+
+ul {
+  list-style-image: url(./components/ContactList/image/social-group.svg);
+  list-style-position: inside;
+}
+
+button {
+  font-weight: 600;
+  padding: 1px 2px;
+  border-style: double;
+  background-color: white;
+  border-radius: 10%;
+}
+
+button:hover,
+button:focus {
+  cursor: pointer;
+  background-color: tomato;
+  outline: none;
+}
+
+form {
+  width: 280px;
+  border-style: hidden;
+  box-shadow: 0 0 5px 2px;
+}
+
+li {
+  border-style: hidden;
+  width: 260px;
+  margin: 5px;
+  background-color: white;
+  /* box-shadow: 0.4em 0.4em 5px rgba(122, 122, 122, 0.5); */
+  box-shadow: 0 0 5px 2px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+h1,
+h2,
+h3 {
+  color: teal;
+  text-shadow: 1px 1px 1px black, 0 0 0 black;
+}

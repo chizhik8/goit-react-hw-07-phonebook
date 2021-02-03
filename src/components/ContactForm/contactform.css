@@ -1,0 +1,8 @@
+.Logo-appear {
+  transform: translateX(-100%);
+}
+
+.Logo-appear-active {
+  transform: translateX(0);
+  transition: transform 500ms linear;
+}
