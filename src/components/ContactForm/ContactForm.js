@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 // import { CSSTransition } from 'react-transition-group';
-import { connect } from 'react-redux';
-import contactsAction from '../../redux/actions/contactsAction';
-import PropTypes from 'prop-types';
-import './contactform.css';
+import { connect } from "react-redux";
+import contactsOperation from "../../redux/operations/contactsOperation";
+import PropTypes from "prop-types";
+import "./contactform.css";
 
 class ContactForm extends Component {
   static propTypes = {
@@ -12,11 +12,11 @@ class ContactForm extends Component {
   };
 
   state = {
-    name: '',
-    number: '',
+    name: "",
+    number: "",
   };
 
-  handleInput = e => {
+  handleInput = (e) => {
     const { name, value } = e.target;
     this.setState(() => {
       return {
@@ -25,11 +25,11 @@ class ContactForm extends Component {
     });
   };
 
-  handleSubmit = e => {
+  handleSubmit = (e) => {
     const { name, number } = this.state;
     e.preventDefault();
     this.props.onAddContacts(name, number);
-    this.setState({ name: '', number: '' });
+    this.setState({ name: "", number: "" });
   };
 
   render() {
@@ -65,7 +65,7 @@ class ContactForm extends Component {
 }
 
 const mapDispatchToProps = {
-  onAddContacts: contactsAction.addContacts,
+  onAddContacts: contactsOperation.addContacts,
 };
 
 export default connect(null, mapDispatchToProps)(ContactForm);

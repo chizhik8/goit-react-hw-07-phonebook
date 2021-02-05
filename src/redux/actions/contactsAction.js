@@ -1,32 +1,47 @@
-import { createAction } from '@reduxjs/toolkit';
-import { v4 as uuidv4 } from 'uuid';
-// import actionTypes from '../constants/contactsActionTypes';
+import { createAction } from "@reduxjs/toolkit";
+// import { v4 as uuidv4 } from "uuid";
 
-const addContacts = createAction('contacts/add', (name, number) => ({
-  payload: { contact: { id: uuidv4(), name, number } },
-}));
+// ---------------Add contacts--------------------------
+const addContactsRequest = createAction("contacts/addRequest");
+const addContactsSuccess = createAction("contacts/addSuccess");
+const addContactsError = createAction("contacts/addError");
 
-const removeContact = createAction('contacts/remove', contactId => ({
-  payload: { contactId },
-}));
+const fetchContactsRequest = createAction("contacts/fetchRequest");
+const fetchContactsSuccess = createAction("contacts/fetchSuccess");
+const fetchContactsError = createAction("contacts/fetchError");
 
-const addFilter = createAction('contacts/addFilter', filter => ({
+// const addContacts = createAction("contacts/add", (name, number) => ({
+//   payload: { contact: { id: uuidv4(), name, number } },
+// }));
+
+// ---------------Remove contacts--------------------------
+
+const removeContactsRequest = createAction("contacts/removeRequest");
+const removeContactsSuccess = createAction("contacts/removeSuccess");
+const removeContactsError = createAction("contacts/removeError");
+
+// const removeContact = createAction("contacts/remove", (contactId) => ({
+//   payload: { contactId },
+// }));
+
+// ---------------Filter--------------------------
+const addFilter = createAction("contacts/addFilter", (filter) => ({
   payload: { filter },
 }));
 
-export default { addContacts, removeContact, addFilter };
+// --------------------export---------------------------------
 
-// const addContacts = (name, number) => ({
-//   type: actionTypes.ADD,
-//   payload: { contact: { id: uuidv4(), name, number } },
-// });
-
-// const removeContact = contactId => ({
-//   type: actionTypes.REMOVE,
-//   payload: { contactId },
-// });
-
-// const addFilter = filter => ({
-//   type: actionTypes.FILTER,
-//   payload: { filter },
-// });
+export default {
+  addContactsRequest,
+  addContactsSuccess,
+  addContactsError,
+  fetchContactsRequest,
+  fetchContactsSuccess,
+  fetchContactsError,
+  removeContactsSuccess,
+  removeContactsRequest,
+  removeContactsError,
+  // addContacts,
+  // removeContact,
+  addFilter,
+};

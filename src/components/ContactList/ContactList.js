@@ -1,18 +1,19 @@
-import React from 'react';
-import { CSSTransition, TransitionGroup } from 'react-transition-group';
-import { connect } from 'react-redux';
-import contactsAction from '../../redux/actions/contactsAction';
+import React from "react";
+import { CSSTransition, TransitionGroup } from "react-transition-group";
+import { connect } from "react-redux";
 
-import './ContactList.css';
+import contactsOperation from "../../redux/operations/contactsOperation";
+
+import "./ContactList.css";
 
 function ContactList({ contacts, onRemoveContact }) {
   return (
     <div>
       <TransitionGroup component="ul">
-        {contacts.map(contact => (
+        {contacts.map((contact) => (
           <CSSTransition key={contact.id} timeout={250} classNames="contacts">
             <li>
-              {' '}
+              {" "}
               {contact.name}: {contact.number}
               <button type="button" onClick={() => onRemoveContact(contact.id)}>
                 x
@@ -25,14 +26,14 @@ function ContactList({ contacts, onRemoveContact }) {
   );
 }
 
-const mapStateToProps = state => ({
-  contacts: state.contacts.items.filter(contact =>
-    contact.name.toLowerCase().includes(state.contacts.filter.toLowerCase()),
+const mapStateToProps = (state) => ({
+  contacts: state.contacts.items.filter((contact) =>
+    contact.name.toLowerCase().includes(state.contacts.filter.toLowerCase())
   ),
 });
 
 const mapDispatchToProps = {
-  onRemoveContact: contactsAction.removeContact,
+  onRemoveContact: contactsOperation.removeContact,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ContactList);
