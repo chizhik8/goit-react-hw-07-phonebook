@@ -1,13 +1,14 @@
 import axios from "axios";
 import contactsAction from "../actions/contactsAction";
 
+axios.defaults.baseURL = "http://localhost:2000";
+
 const addContacts = (name, number) => (dispatch) => {
   dispatch(contactsAction.addContactsRequest());
-  //   console.log("addCont", name, number);
+
   axios
-    .post("http://localhost:2000/contacts", { name, number })
+    .post("/contacts", { name, number })
     .then((response) => {
-      //   console.log("response:", response);
       dispatch(contactsAction.addContactsSuccess(response.data));
     })
     .catch((error) => dispatch(contactsAction.addContactsError(error)));
@@ -16,7 +17,7 @@ const addContacts = (name, number) => (dispatch) => {
 const fetchContacts = () => (dispatch) => {
   dispatch(contactsAction.fetchContactsRequest());
   axios
-    .get("http://localhost:2000/contacts")
+    .get("/contacts")
     .then(({ data }) => dispatch(contactsAction.fetchContactsSuccess(data)))
     .catch((error) => dispatch(contactsAction.fetchContactsError(error)));
 };
@@ -25,7 +26,7 @@ const removeContact = (id) => (dispatch) => {
   dispatch(contactsAction.removeContactsRequest());
   //   console.log("id revCont", id);
   axios
-    .delete(`http://localhost:2000/contacts/${id}`)
+    .delete(`/contacts/${id}`)
     .then(() => dispatch(contactsAction.removeContactsSuccess(id)))
     .catch((error) => dispatch(contactsAction.removeContactsError(error)));
 };

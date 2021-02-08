@@ -2,12 +2,14 @@
   "name": "goit-react-hw-07-phonebook",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://chizhik8.github.io/goit-react-hw-07-phonebook",
   "dependencies": {
     "@reduxjs/toolkit": "^1.5.0",
     "@testing-library/jest-dom": "^5.11.9",
     "@testing-library/react": "^11.2.5",
     "@testing-library/user-event": "^12.6.3",
     "axios": "^0.21.1",
+    "gh-pages": "^3.1.0",
     "json-server": "^0.16.3",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
@@ -16,9 +18,12 @@
     "react-transition-group": "^4.4.1",
     "redux": "^4.0.5",
     "redux-logger": "^3.0.6",
+    "reselect": "^4.0.0",
     "web-vitals": "^0.2.4"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",

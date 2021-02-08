@@ -1,14 +1,15 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import contactsAction from '../../redux/actions/contactsAction';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import contactsAction from "../../redux/actions/contactsAction";
+import contactsSelectors from "../../redux/selectors/contactsSelectors";
 
 class Filter extends Component {
   static propTypes = {
     filter: PropTypes.string,
   };
 
-  handleInput = e => {
+  handleInput = (e) => {
     this.props.onInputFilter(e.target.value);
   };
   render() {
@@ -21,8 +22,8 @@ class Filter extends Component {
   }
 }
 
-const mapStateToProps = state => ({
-  value: state.contacts.filter,
+const mapStateToProps = (state) => ({
+  value: contactsSelectors.getValueFilter(state),
 });
 
 const mapDispatchToProps = {

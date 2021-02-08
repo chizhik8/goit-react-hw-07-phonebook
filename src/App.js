@@ -4,6 +4,7 @@ import ContactForm from "./components/ContactForm/ContactForm";
 import ContactList from "./components/ContactList/ContactList";
 import Filter from "./components/Filter/Filter";
 import contactsOperation from "../src/redux/operations/contactsOperation";
+import contactsSelectors from "./redux/selectors/contactsSelectors";
 
 export class App extends Component {
   componentDidMount() {
@@ -11,6 +12,7 @@ export class App extends Component {
   }
 
   render() {
+    // console.log("App alert:", this.props.isAlertContacts);
     return (
       <div>
         <ContactForm />
@@ -27,8 +29,9 @@ export class App extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  isLoadingContacts: state.contacts.loading,
-  contacts: state.contacts.items,
+  isLoadingContacts: contactsSelectors.getLoading(state),
+  contacts: contactsSelectors.getContactItems(state),
+  isAlertContacts: contactsSelectors.getAlert(state),
 });
 
 const mapDispatchToProps = {

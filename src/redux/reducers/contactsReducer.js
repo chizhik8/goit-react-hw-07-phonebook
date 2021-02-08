@@ -8,9 +8,12 @@ import contactsAction from "../actions/contactsAction";
 const itemsReducer = createReducer([], {
   [contactsAction.fetchContactsSuccess]: (state, action) => action.payload,
   [contactsAction.addContactsSuccess]: (state, action) => {
-    // console.log("state addCont:", state);
-    // console.log("action addCont:", action);
-    return [...state, action.payload];
+    return state.find(
+      (contact) =>
+        contact.name.toLowerCase() === action.payload.name.toLowerCase()
+    )
+      ? alert(`${action.payload.name} is already in contacts `)
+      : [...state, action.payload];
   },
 
   [contactsAction.removeContactsSuccess]: (state, action) =>
@@ -36,15 +39,14 @@ const loadingReducer = createReducer(false, {
   [contactsAction.removeContactsError]: () => false,
 });
 
+// ---------------------alert------------------------------
+
+const alertReducer = createReducer(false, {});
+
 // ---------------------------export---------------------------------
 export default combineReducers({
   items: itemsReducer,
   filter: filterReducer,
   loading: loadingReducer,
+  alert: alertReducer,
 });
-
-// return state.find((data) => {
-//   return data.name.toLowerCase() === action.payload.name.toLowerCase();
-// })
-//   ? (alert(`${action.payload.name} is already in contacts `), [...state])
-//   : [...state, action.payload];
